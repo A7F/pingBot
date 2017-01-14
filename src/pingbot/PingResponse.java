@@ -1,8 +1,8 @@
 package pingbot;
 
 /**
- *
- * @author Luca
+ * ping response class model
+ * @author Luke
  */
 class PingResponse {
     int byte_number;

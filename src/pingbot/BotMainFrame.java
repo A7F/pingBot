@@ -12,7 +12,7 @@ import utilities.LocalisationService;
 
 /**
  * this class handles incoming updates and dispatch commands received to the right use-case class.
- * @author Luca
+ * @author Luke
  */
 public class BotMainFrame extends TelegramLongPollingBot{
 

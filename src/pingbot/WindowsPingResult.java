@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 /**
  *
- * @author Luca
+ * @author Luke
  */
 public class WindowsPingResult {
     private String address;

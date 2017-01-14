@@ -1,15 +1,12 @@
 package pingbot;
 
-import com.googlecode.jpingy.Ping;
-import com.googlecode.jpingy.PingArguments;
-import com.googlecode.jpingy.PingResult;
 import org.telegram.telegrambots.TelegramApiException;
 import org.telegram.telegrambots.TelegramBotsApi;
 import org.telegram.telegrambots.logging.BotLogger;
 
 /**
  *
- * @author Luca
+ * @author Luke
  */
 public class PingBot{
     
