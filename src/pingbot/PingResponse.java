@@ -32,6 +32,4 @@ class PingResponse {
     public int getTtl() {
         return ttl;
     }
-    
-    
 }

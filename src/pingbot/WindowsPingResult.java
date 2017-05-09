@@ -3,7 +3,7 @@ package pingbot;
 import java.util.ArrayList;
 
 /**
- *
+ * maybe you need this if you use windows...
  * @author Luke
  */
 public class WindowsPingResult {

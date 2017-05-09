@@ -5,7 +5,10 @@ import org.telegram.telegrambots.api.methods.send.SendMessage;
 import org.telegram.telegrambots.api.objects.Message;
 import utilities.LocalisationService;
 
-
+/**
+ * prepare the message to be sent whenever command /start is spammed.
+ * @author Luca
+ */
 public class OnStartActions {
     Message message;
     int USER_ID = 0;
@@ -23,5 +26,4 @@ public class OnStartActions {
         msgRequest.setReplyMarkup(new MainMenu());
         return msgRequest;
     }
-   
 }

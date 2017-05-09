@@ -20,6 +20,11 @@ public class BotMainFrame extends TelegramLongPollingBot{
     public String getBotToken() {
         return BotConfig.BOT_TOKEN;
     }
+    
+    @Override
+    public String getBotUsername() {
+        return BotConfig.BOT_USERNAME;
+    }
 
     @Override
     public void onUpdateReceived(Update update) {
@@ -27,7 +32,7 @@ public class BotMainFrame extends TelegramLongPollingBot{
             Message message = update.getMessage();
             String messageText = message.getText();
             
-            //caso d'uso: comando /start usato in primo avvio
+            //use case: command /start received
             if(messageText.equals("/start")){
                 SendMessage msg = new SendMessage();
                 msg.setReplyMarkup(new MainMenu());
@@ -40,7 +45,7 @@ public class BotMainFrame extends TelegramLongPollingBot{
                 }
             }
             
-            //caso d'uso: comando di ping
+            //use case: command /ping [address]
             if(messageText.toLowerCase().startsWith("/ping") || messageText.toLowerCase().startsWith("ping")){
                 String request;
                 SendMessage msg;
@@ -61,69 +66,7 @@ public class BotMainFrame extends TelegramLongPollingBot{
                 }
             }
             
-            //caso d'uso: comando di nslookup
-//            if(message.getText().toLowerCase().startsWith("/nslookup")){
-//                String request;
-//                SendMessage msg;
-//                OnLookupActions lookupAction = new OnLookupActions();
-//                request = lookupAction.elaboratePingRequest(message.getText());
-//                if(request.equals("")){
-//                    msg = lookupAction.messageSendInvalid();
-//                    msg.setChatId(message.getChatId().toString());
-//                }else{
-//                    msg = lookupAction.messageSend(request);
-//                    msg.setChatId(message.getChatId().toString());
-//                }
-//                try {
-//                    System.out.println(request+"\t"+message.getFrom().getId()+"\t"+message.getChatId().toString());
-//                    sendMessage(msg);
-//                } catch (TelegramApiException ex) {
-//                    ex.toString();
-//                }
-//            }
-            
-            //caso d'uso: comando host (da sistemare)
-//            if(message.getText().toLowerCase().startsWith("/host")){
-//                String request;
-//                SendMessage msg;
-//                OnLookupActions lookupAction = new OnLookupActions();
-//                request = lookupAction.elaboratePingRequest(message.getText());
-//                if(request.equals("")){
-//                    msg = lookupAction.messageSendInvalid();
-//                    msg.setChatId(message.getChatId().toString());
-//                }else{
-//                    msg = lookupAction.messageSend(request);
-//                    msg.setChatId(message.getChatId().toString());
-//                }
-//                try {
-//                    System.out.println(request+"\t"+message.getFrom().getId()+"\t"+message.getChatId().toString());
-//                    sendMessage(msg);
-//                } catch (TelegramApiException ex) {
-//                    ex.toString();
-//                }
-//            }
-            
-            //caso d'uso: comando dig (da sistemare)
-//            if(message.getText().toLowerCase().startsWith("/dig")){
-//                String request;
-//                SendMessage msg;
-//                OnDigActions digAction = new OnDigActions();
-//                request = digAction.elaboratePingRequest(message.getText());
-//                if(request.equals("")){
-//                    msg = digAction.messageSendInvalid();
-//                    msg.setChatId(message.getChatId().toString());
-//                }else{
-//                    msg = digAction.messageSend(request);
-//                    msg.setChatId(message.getChatId().toString());
-//                }
-//                try {
-//                    sendMessage(msg);
-//                } catch (TelegramApiException ex) {
-//                    ex.toString();
-//                }
-//            }
-            
-            //caso d'uso: richiesto aiuto
+            //use case: user need help
             if(message.getText().equals("/help") || message.getText().equals("help")){
                 OnHelpCommand com = new OnHelpCommand(message);
                 SendMessage send = com.dynamicHelp();
@@ -136,7 +79,7 @@ public class BotMainFrame extends TelegramLongPollingBot{
             
         }
         
-        //inline query
+        //inline query are handled here
         if(update.hasInlineQuery()){
             InlineQuery inlineQuery = update.getInlineQuery();
             AnswerInlineQuery answer = new AnswerInlineQuery();
@@ -155,10 +98,5 @@ public class BotMainFrame extends TelegramLongPollingBot{
                 ex.toString();
             }
         }
-    }
-
-    @Override
-    public String getBotUsername() {
-        return BotConfig.BOT_USERNAME;
     }
 }

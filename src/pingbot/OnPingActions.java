@@ -14,12 +14,16 @@ import org.telegram.telegrambots.api.objects.inlinequery.result.InlineQueryResul
 import utilities.Emoji;
 import utilities.LocalisationService;
 
-
+/**
+ * Here is where the bot actually performs a ping.
+ * Each function returns the message ready to be sent.
+ * @author Luke
+ */
 public class OnPingActions{
     String result;
     String request;
     ArrayList<String> pingResults = new ArrayList<>();
-    WindowsPingResult ping = new WindowsPingResult();
+    //WindowsPingResult ping = new WindowsPingResult();       //I run this bot on a debian vps so I won't need this
         
     public SendMessage messageSend(String request){
         SendMessage msgRequest = new SendMessage();
@@ -88,6 +92,11 @@ public class OnPingActions{
         result=build.toString();
     }
     
+    /**
+     * run a fast ping whenever someone uses a callback
+     * @param addr address to ping
+     * @return the inline result properly built
+     */
     public List<InlineQueryResult> fastPing(String addr){
         String address = elaboratePingRequest(addr);
         List<InlineQueryResult> ilr = new ArrayList<>();
@@ -115,6 +124,11 @@ public class OnPingActions{
         return ilr;
     }
     
+    /**
+     * clean up the ping request.
+     * @param request
+     * @return the address to ping
+     */
     public String elaboratePingRequest(String request){
         StringBuilder build = new StringBuilder();
         String address = request.replace("/ping ", "");

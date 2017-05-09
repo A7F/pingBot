@@ -21,6 +21,4 @@ public class OnHelpCommand {
         msgRequest.setText(LocalisationService.getInstance().getString("onHelp"));
         return msgRequest;
     }
-    
-    
 }

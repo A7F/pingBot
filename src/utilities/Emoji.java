@@ -1,6 +1,10 @@
 
 package utilities;
 
+/**
+ * my standard emoji class.
+ * @author Luke
+ */
 public enum Emoji {
 
     A("\uD83C\uDD70"),
